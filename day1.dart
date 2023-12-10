@@ -1015,12 +1015,17 @@ xlkdlhlk23four
   for(var line in lines) {
     RegExpMatch? match = exp.firstMatch(line)!;
     var firstDigit = match.group(1)!;
-    var secondDigit = match.group(2) ?? firstDigit;
-    
+    String secondDigit;
+    if(match.group(2) == null || match.group(2)!.isEmpty) {
+      secondDigit = firstDigit;
+    } else {
+      secondDigit = match.group(2)!;
+    }
+        
     var number = int.parse(firstDigit + secondDigit);
     sum = sum + number;
+    
+    print('${number.toString()} - ${sum.toString()}');
   }
   print(sum);
 }
-
-
