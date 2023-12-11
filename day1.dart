@@ -1005,9 +1005,10 @@ xlkdlhlk23four
 8ninejseven5
 """;
   
-  
+   var formattedInput = replaceWrittenDigits(input);
    LineSplitter ls = const LineSplitter();
-   List<String> lines = ls.convert(input);
+   List<String> lines = ls.convert(formattedInput);
+  
   
   var sum = 0;
   RegExp exp = RegExp(r'[a-z]*(\d{1}).*?(\d?)[a-z]*$');
@@ -1025,7 +1026,25 @@ xlkdlhlk23four
     var number = int.parse(firstDigit + secondDigit);
     sum = sum + number;
     
-    print('${number.toString()} - ${sum.toString()}');
+    print('${number.toString()} - ${sum.toString()} - $line');
   }
   print(sum);
 }
+
+String replaceWrittenDigits(String inputString) {
+  dict.forEach((k,v) => (inputString = inputString.replaceAll(k, v)));
+  
+  return inputString;
+}
+
+var dict = {
+  "one": "1",
+  "two": "2",
+  "three": "3",
+  "four": "4",
+  "five": "5",
+  "six": "6",
+  "seven": "7",
+  "eight": "8",
+  "nine": "9"
+};
